@@ -1,10 +1,16 @@
-import React from 'react';
-import { useSession, signIn, signOut } from 'next-auth/react';
-import { Flex, Box, Heading, Button } from 'rebass';
+import React from 'react'
+import { useRouter } from 'next/router'
+import { useSession, signOut } from 'next-auth/react'
+import { Flex, Box, Heading, Button } from 'rebass'
 
 export default function Home() {
-  const { data: session } = useSession();
+  const { data: session } = useSession()
+  const { push, asPath } = useRouter()
   // const { session, accessToken } = data
+
+  const handleSignIn = () => {
+    push(`/auth/login?callbackUrl=${asPath}`)
+  }
 
   return (
     <Flex flexWrap={'wrap'} justifyContent={'center'} py={5}>
@@ -16,16 +22,32 @@ export default function Home() {
           <div style={{ textAlign: 'center' }}>
             Signed in as {session.user.email} <br />
             <br />
-            <button onClick={() => signOut()}>Sign out</button>
+            <Button
+              backgroundColor='#dddddd'
+              mt={1}
+              width={'140px'}
+              style={{ cursor: 'pointer' }}
+              onClick={() => signOut()}
+            >
+              Sign out
+            </Button>
           </div>
         ) : (
           <div style={{ textAlign: 'center' }}>
-            Please signed in <br />
+            Please signed in
             <br />
-            <Button onClick={() => signIn()}>Sign in</Button>
+            <Button
+              backgroundColor='#152238'
+              mt={1}
+              width={'140px'}
+              style={{ cursor: 'pointer' }}
+              onClick={handleSignIn}
+            >
+              Sign in
+            </Button>
           </div>
         )}
       </Box>
     </Flex>
-  );
+  )
 }

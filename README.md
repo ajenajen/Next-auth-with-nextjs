@@ -1,4 +1,10 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+## Next-auth with Nex.js demo
+
+This project uses services as follows: Next.js, Facebook development, Google API development, https://cloud.mongodb.com/ and https://mailtrap.io/.
+
+## Another detail follow this link
+
+https://www.youtube.com/watch?v=tgrvKGPmI04&t=1686s
 
 ## Getting Started
 
